@@ -8,4 +8,12 @@ describe Account do
       expect(account.balance).to eq 0
     end
   end
+
+  describe '#deposit' do
+    it 'add money to balance' do
+      account = Account.new
+      account.deposit(10)
+      expect(account.balance).to eq 10
+    end
+  end
 end
