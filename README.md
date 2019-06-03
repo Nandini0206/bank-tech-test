@@ -1,6 +1,6 @@
 ## Bank Tech Test
 
-Practice of a tech test.
+Practice of a tech test - simple banking application written in Ruby.
 
 ### Requirements
 
