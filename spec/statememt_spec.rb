@@ -10,7 +10,7 @@ describe Statement do
 
   describe 'list of transactions' do
     it 'can add new transaction' do
-      statement = Stategment.new
+      statement = Statement.new
       transaction = Transaction.new(20, nil, 80)
       statement.show << transaction
       expect(statement.show).to eq [transaction]
