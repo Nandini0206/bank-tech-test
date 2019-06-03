@@ -12,8 +12,17 @@ describe Account do
   describe '#deposit' do
     it 'add money to balance' do
       account = Account.new
-      account.deposit(10)
-      expect(account.balance).to eq 10
+      account.deposit(50)
+      expect(account.balance).to eq 50
+    end
+  end
+
+  describe '#withdraw' do
+    it 'reduce balance' do
+      account = Account.new
+      account.deposit(50)
+      account.withdraw(20)
+      expect(account.balance).to eq 30
     end
   end
 end
