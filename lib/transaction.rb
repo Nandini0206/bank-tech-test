@@ -1,6 +1,6 @@
 class Transaction
 
-  attr_reader :credit, :debit, :balance, :date
+  attr_reader :date, :credit, :debit, :balance
 
   def initialize(credit, debit, balance)
     @credit = credit
@@ -8,5 +8,4 @@ class Transaction
     @debit = debit
     @date = Time.now
   end
-
 end

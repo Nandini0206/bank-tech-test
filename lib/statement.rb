@@ -1,9 +1,8 @@
 class Statement
 
-attr_reader :show
+attr_accessor :show
 
-def initialize
-  @show = []
-end
-
+  def initialize
+    @show = []
+  end
 end
