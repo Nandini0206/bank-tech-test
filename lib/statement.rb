@@ -1,6 +1,7 @@
-class Statement
+# frozen_string_literal: true
 
-attr_accessor :show
+class Statement
+  attr_accessor :show
 
   def initialize
     @show = []

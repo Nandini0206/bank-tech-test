@@ -1,9 +1,10 @@
+# frozen_string_literal: true
+
 require_relative 'transaction'
 require_relative 'statement'
 
 class Account
-
-  attr_reader :balance
+  attr_reader :balance, :transactions
 
   def initialize(statement = Statement.new)
     @balance = 0
@@ -20,39 +21,27 @@ class Account
     update(0, amount)
   end
 
-  def balance
-    @balance
-  end
-
   def statement
     @statement.show
   end
 
-  def transactions
-    @transactions
-  end
-
   def print_statement
     puts 'date || credit || debit || balance'
-    statement.each do |transaction|
-      if transaction.credit == 0
- 	      display = transaction.date.strftime('%d/%m/%Y') + ' || '
- 	      display += '  || '
- 	      display += transaction.debit.to_f.to_s
- 	      display += ' || ' + transaction.balance.to_f.to_s
- 	    elsif transaction.debit == 0
- 	      display = transaction.date.strftime('%d/%m/%Y') + ' || '
- 	      display += transaction.credit.to_f.to_s
- 	      display += ' || '
- 	      display += '  || ' + transaction.balance.to_f.to_s
- 	    else
- 	      display = transaction.date.strftime('%d/%m/%Y') + ' || '
- 	      display += transaction.credit.to_f.to_s
- 	      display += ' || '
- 	      display += transaction.debit.to_f.to_s
- 	      display += ' || ' + transaction.balance.to_f.to_s
- 	    end
- 	      puts display
+    statement.each.reverse do |transaction|
+      display = transaction.date.strftime('%d/%m/%Y') + ' || '
+      if transaction.credit.zero?
+        display += ' || '
+        display += transaction.debit.to_f.to_s
+      elsif transaction.debit.zero?
+        display += transaction.credit.to_f.to_s
+        display += ' || '
+      else
+        display += transaction.credit.to_f.to_s
+        display += ' || '
+        display += transaction.debit.to_f.to_s
+      end
+      display += ' || ' + transaction.balance.to_f.to_s
+      puts display
     end
   end
 

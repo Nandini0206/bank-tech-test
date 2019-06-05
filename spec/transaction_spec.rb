@@ -1,8 +1,9 @@
+# frozen_string_literal: true
+
 require 'transaction'
-require 'Timecop'
+require 'timecop'
 
 describe Transaction do
-
   describe '#intialize' do
     it 'make a deposit' do
       Timecop.freeze do
