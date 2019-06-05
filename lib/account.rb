@@ -14,11 +14,17 @@ class Account
   def deposit(amount)
     @balance += amount
     update(amount, 0)
+    balance
   end
 
   def withdraw(amount)
+    if amount > @balance
+      raise "Insufficient funds available"
+    else
     @balance -= amount
     update(0, amount)
+    balance
+    end
   end
 
   def statement
