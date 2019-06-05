@@ -1,6 +1,6 @@
 ## Bank Tech Test
 
-Practice of a tech test - simple banking application written in Ruby.
+Practice of a tech test written in Ruby (using RSpec) - simple banking application allowing you to deposit, withdraw and view transactions.
 
 ### Requirements
 
@@ -27,3 +27,30 @@ date || credit || debit || balance
 ### Domain Model
 
 <img alt="Diagram of Domain Model" src="bank-tech-test-model.jpg">
+
+After modelling the test, I created all the relevant files (spec files and test files).
+Once all the functionality was completed, the last step was to print the statement as per the requirement.
+
+### How to Use
+
+1. Clone the repository.
+2. Run  ```bundle install``` in command line to ensure all gems are installed.
+3. To run the tests use ```rspec```
+
+### IRB
+```
+Nandinis-MacBook-Pro:bank-tech-test nandinipatel$ irb
+2.5.0 :001 > require "./lib/account"
+ => true
+2.5.0 :002 > account = Account.new
+ => #<Account:0x00007f8f5c859b28 @balance=0, @statement=#<Statement:0x00007f8f5c859ab0 @show=[]>>
+2.5.0 :003 > account.deposit(4000)
+ => [#<Transaction:0x00007f8f5d9bda90 @credit=4000, @balance=4000, @debit=0, @date=2019-06-05 11:40:28 +0100>]
+2.5.0 :004 > account.withdraw(250)
+ => [#<Transaction:0x00007f8f5d9bda90 @credit=4000, @balance=4000, @debit=0, @date=2019-06-05 11:40:28 +0100>, #<Transaction:0x00007f8f5d9a5378 @credit=0, @balance=3750, @debit=250, @date=2019-06-05 11:40:32 +0100>]
+2.5.0 :005 > puts account.print_statement
+date || credit || debit || balance
+05/06/2019 || 4000.0 ||  || 4000.0
+05/06/2019 ||  || 250.0 || 3750.0
+2.5.0 :006 > exit
+```
