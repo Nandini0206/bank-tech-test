@@ -12,8 +12,12 @@ class Account
   end
 
   def deposit(amount)
+    if amount < 0
+      raise "Invalid amount"
+    else
     @balance += amount
     update(amount, 0)
+    end
     balance
   end
 
@@ -23,8 +27,8 @@ class Account
     else
     @balance -= amount
     update(0, amount)
-    balance
     end
+    balance
   end
 
   def statement

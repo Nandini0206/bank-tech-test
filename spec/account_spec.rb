@@ -24,11 +24,18 @@ describe Account do
       account.deposit(50)
       expect(account.balance).to eq 50
     end
+
+    it 'raises error when negative balance inputed' do
+      statement = Statement.new
+      account = Account.new(statement)
+      expect { account.deposit(-10) }.to raise_error "Invalid amount"
+    end
   end
 
   describe '#withdraw' do
-    it 'raises error if balance is less than withdraw amount' do
-      account = Account.new
+    it 'raises error if current balance is less than withdraw amount' do
+      statement = Statement.new
+      account = Account.new(statement)
       account.deposit(50)
       expect {account.withdraw(80)}.to raise_error "Insufficient funds available"
     end
