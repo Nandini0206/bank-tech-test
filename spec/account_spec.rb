@@ -56,11 +56,13 @@ describe Account do
     end
 
     it 'prints list of transactions' do
-      statement = Statement.new
-      account = Account.new(statement)
-      account.deposit(100)
-      account.withdraw(20)
-      expect { account.print_statement }.to output("date || credit || debit || balance\n05/06/2019 || 100.0 ||  || 100.0\n05/06/2019 ||  || 20.0 || 80.0\n").to_stdout
+      Timecop.freeze('2019-06-05') do
+        statement = Statement.new
+        account = Account.new(statement)
+        account.deposit(100)
+        account.withdraw(20)
+        expect { account.print_statement }.to output("date || credit || debit || balance\n05/06/2019 || 100.0 ||  || 100.0\n05/06/2019 ||  || 20.0 || 80.0\n").to_stdout
+      end
     end
   end
 end
